@@ -1,35 +1,57 @@
 package com.example.gestion_cursos.controller;
 
 import com.example.gestion_cursos.model.Course;
-import com.example.gestion_cursos.model.Student;
 import com.example.gestion_cursos.service.CourseService;
-import com.example.gestion_cursos.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
-@RequestMapping("/cursos")
+import org.springframework.stereotype.Controller;
+
+@Controller
+@RequestMapping("/courses")
 public class CourseController {
+
     @Autowired
     private CourseService service;
 
-    @GetMapping("/todos")
-    public List<Course> getAllCourses() {
-        return service.getAllCourses();
-    }
-    @PostMapping("/crear")
-    public Course saveCourse(@RequestBody Course course) {
-        return service.saveCourse(course);
+    @GetMapping("")
+    public String getAllCourses(Model model) {
+        List<Course> courses = service.getAllCourses();
+        model.addAttribute("courses", courses);
+        return "courses";
     }
 
-    @PutMapping("/editar/{id}")
-    public Course updateCourse(@RequestBody Course courseDetails, @PathVariable Integer id) {
-        return service.updateCourse(id, courseDetails);
+    @GetMapping("/crear")
+    public String createCourseForm(Model model) {
+        model.addAttribute("course", new Course());
+        return "newCourse";
     }
-    @DeleteMapping("eliminar/{id}")
-    public void deleteCourse(@PathVariable Integer id) {
+
+    @PostMapping("/editar/{id}")
+    public String updateCourse(@PathVariable Integer id,
+                               @ModelAttribute Course course) {
+        Course updatedCourse = service.updateCourse(id, course);
+        return "redirect:/courses";
+    }
+    @PostMapping("/crear")
+    public String saveCourse(@ModelAttribute Course course) {
+        service.saveCourse(course);
+        return "redirect:/courses";
+    }
+
+    @GetMapping("/editar/{id}")
+    public String editCourseForm(@PathVariable Integer id, Model model) {
+        Course course = service.getCourseById(id);
+        model.addAttribute("course", course);
+        return "editCourse";
+    }
+
+    @PostMapping("/eliminar/{id}")
+    public String deleteCourse(@PathVariable("id") Integer id) {
         service.deleteCourse(id);
+        return "redirect:/courses";
     }
 }

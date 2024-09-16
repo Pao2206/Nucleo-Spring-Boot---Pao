@@ -14,34 +14,34 @@ public class StudentServiceImpl implements StudentService {
     private StudentRepo studentRepo;
 
     @Override
-    public List<Student> getAllStudents(){
+    public List<Student> getAllStudents() {
         return studentRepo.findAll();
     }
+
     @Override
-    public Student saveStudent(Student student){
+    public Student createStudent(Student student) {
         return studentRepo.save(student);
     }
+
     @Override
     public Student getStudentById(Integer id) {
         return studentRepo.findById(id).orElse(null);
     }
 
     @Override
-     public Student updateStudent(Integer id, Student studentDetails) {
-         Student student = getStudentById(id);
-         if (student != null) {
-             student.setFirstName(studentDetails.getFirstName());
-             student.setLastName(studentDetails.getLastName());
-             student.setDateBirth(studentDetails.getDateBirth());
-             student.setEmail(studentDetails.getEmail());
-             return studentRepo.save(student);
-         }
-         return null;
-     }
+    public Student updateStudent(Integer id, Student studentDetails) {
+        Student student = getStudentById(id);
+        if (student != null) {
+            student.setFirstName(studentDetails.getFirstName());
+            student.setLastName(studentDetails.getLastName());
+            student.setAge(studentDetails.getAge());
+            student.setEmail(studentDetails.getEmail());
+            return studentRepo.save(student);         }
+        return null;
+    }
 
     @Override
     public void deleteStudent(Integer id) {
         studentRepo.deleteById(id);
     }
-
 }

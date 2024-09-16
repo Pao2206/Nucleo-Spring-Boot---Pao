@@ -1,35 +1,42 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorate="~{/generico/genericoUI}">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/generico/genericoUI}">
 <head>
     <meta charset="UTF-8">
     <title>Sistema de Gestión</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+          integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+          crossorigin="anonymous">
 </head>
 <body>
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
     <ul class="navbar-nav">
         <li class="nav-item active">
-            <a class="nav-link" href="estudiantes">Estudiantes</a>
+            <a class="nav-link" th:href="@{/students}">Estudiantes</a>
         </li>
         <li class="nav-item active">
-            <a class="nav-link" href="@{/cursos}">Cursos</a>
+            <a class="nav-link" th:href="@{/courses}">Cursos</a>
         </li>
     </ul>
 </nav>
 
-<div class = "container text-center">
+<div class="container text-center">
     <div>
         <br><br><br><br>
         <h1>BIENVENIDOS</h1> <br>
         <h3>Sistema de Gestión Unidad Educativa "Danilo Brito Aguilar"</h3><br>
-        <h4> Arriba puedes encontrar "Estudiantes" y "Cursos"</h4>
+        <h4>Arriba puedes encontrar "Estudiantes" y "Cursos"</h4>
         <br><br><br><br><br><br><br><br>
-        <h8>Estamos trabajando para traer a ti la gestión de más opciones.</h8>
+        <p class="small">Estamos trabajando para traer a ti la gestión de más opciones.</p>
     </div>
 </div>
 
 </body>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js"
+        integrity="sha384-fM1zjNt3nSE8fdydoUAWdoh6Vq2gIz/fK2+TxD5WRJDbSxEzv+p10n/aZcEL/uKx"
+        crossorigin="anonymous"></script>
 </html>

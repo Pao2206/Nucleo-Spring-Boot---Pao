@@ -1,6 +1,7 @@
 package com.example.gestion_cursos.service.impl;
 
 import com.example.gestion_cursos.model.Course;
+import com.example.gestion_cursos.model.Student;
 import com.example.gestion_cursos.repositories.CourseRepo;
 import com.example.gestion_cursos.service.CourseService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,6 +42,11 @@ public class CourseServiceImpl implements CourseService {
     @Override
     public void deleteCourse(Integer id) {
         courseRepo.deleteById(id);
+    }
+
+    @Override
+    public void updateStudent(Integer id, Student student) {
+
     }
 
 }

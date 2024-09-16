@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Data;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Data
 @Entity
@@ -17,7 +17,7 @@ public class Student implements Serializable {
     private String firstName;
     private String lastName;
     private String email;
-    private Date dateBirth;
+    private int age;
 
     public int getStudentId() {
         return studentId;
@@ -51,11 +51,11 @@ public class Student implements Serializable {
         this.email = email;
     }
 
-    public Date getDateBirth() {
-        return dateBirth;
+    public int getAge() {
+        return age;
     }
 
-    public void setDateBirth(Date dateBirth) {
-        this.dateBirth = dateBirth;
+    public void setAge(int age) {
+        this.age = age;
     }
 }

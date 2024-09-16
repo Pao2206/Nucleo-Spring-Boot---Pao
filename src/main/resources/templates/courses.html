@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Cursos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+<div class="container">
+    <h1>Lista de Cursos</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Créditos</th>
+            <th scope="col">Acciones</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Itera sobre la lista de cursos -->
+        <tr th:each="course : ${courses}">
+            <th scope="row" th:text="${course.courseId}"></th>
+            <td th:text="${course.courseName}"></td>
+            <td th:text="${course.description}"></td>
+            <td th:text="${course.credits}"></td>
+            <td>
+                <!-- Enlace para editar el curso -->
+                <a th:href="@{/courses/editar/{id}(id=${course.courseId})}" class="btn btn-primary">Editar</a>
+                <!-- Formulario para eliminar el curso -->
+                <form th:action="@{/courses/eliminar/{id}(id=${course.courseId})}" method="post" style="display:inline;">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <a href="/courses/crear" class="btn btn-success">Crear Nuevo Curso</a>
+</div>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
